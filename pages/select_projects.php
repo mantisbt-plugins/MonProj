@@ -44,4 +44,3 @@ global $t_user;
 $t_user_id = auth_get_current_user_id(); 
 $t_user = user_get_row( $t_user_id ); 
 include( config_get( 'plugin_path' ) . 'MonProj' . DIRECTORY_SEPARATOR . 'pages'. DIRECTORY_SEPARATOR .  'manage_monitor.php');  
-

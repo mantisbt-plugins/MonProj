@@ -4,18 +4,16 @@ class MonProjPlugin extends MantisPlugin {
 	function register() {
 		$this->name        	= 'MonProj';
 		$this->description 	= lang_get( 'MonProj_description' );
-		$this->version     	= '0.01';
+		$this->version     	= '1.10';
 		$this->requires    	= array('MantisCore'       => '2.0.0',);
 		$this->author      	= 'Cas Nuy';
 		$this->contact     	= 'Cas-at-nuy.info';
-		$this->url         	= 'https://github.com/mantisbt-plugins/MonProj';
-		$this->page		= 'config';
+		$this->url         	= 'http://www.nuy.info';
+		$this->page			= 'config';
 	}
 
 	function init() { 
-		// Delete settings when user is deleted
 		event_declare('EVENT_ACCOUNT_DELETED');
-		// Allow adding user to one or more groups
 		event_declare('EVENT_MANAGE_USER_FORM');
 		// above declaration may become obsolete once these are part of standard mantis
 
@@ -43,16 +41,30 @@ class MonProjPlugin extends MantisPlugin {
 	function SelProj2(){
 		include( config_get( 'plugin_path' ) . 'MonProj' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'manage_monitor.php');  
 	}
+	
 	function AddMon($p_event,$p_bugdata){
 		include( config_get( 'plugin_path' ) . 'MonProj' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'add_monitor.php');  
 	}
 	
 	function DelSelProj($p_event,$f_user_id){
- 		$sp_table	= plugin_table('monitored_projects');
-		$sql = "delete from $sp_table where user_id=$f_user_id";
+		$sql = "delete from {plugin_MonProj_monitored_projects} where user_id=$f_user_id";
 		$result		= db_query($sql);
 	}
 
+  /** uninstall and install functions * */
+    function uninstall() {
+        global $g_db;
+        # remove the tables created at installation
+        $request = 'DROP TABLE ' . plugin_table('monitored_projects');
+        $g_db->Execute($request);
+
+        # IMPORTANT : erase information about the plugin stored in Mantis
+        # Without this request, you cannot create the table again (if you re-install)
+		$schema = 'plugin_MonProj_schema';
+		$request = "delete from {config} where config_id = '$schema'";
+        $g_db->Execute($request);
+    }
+	
 	function schema() {
 		return array(
 			array( 'CreateTableSQL', array( plugin_table( 'monitored_projects' ), "

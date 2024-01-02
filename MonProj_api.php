@@ -33,10 +33,7 @@ function print_monproj_user_list( $p_user_id, $p_include_remove_link = true ) {
 	foreach( $t_projects as $t_project_id=>$t_project ) {
 		$t_project_name = string_attribute( $t_project['name'] );
 		if( $p_include_remove_link && access_has_project_level( config_get( 'project_user_threshold' ), $t_project_id ) ) {
-			$link = 'plugins/MonProj/pages/manage_monitor_delete.php';
-			$link .= "?project_id=". $t_project_id;
-			$link .= "&user_id=". $p_user_id;
-			echo "<a href='$link' >Remove &nbsp</a>";
+			echo "<a href=plugin.php?page=MonProj/manage_monitor_delete.php&project_id=$t_project_id&user_id=$p_user_id >Remove &nbsp</a>";
 		}
 		echo $t_project_name;
 		echo '<br />';

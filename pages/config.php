@@ -8,7 +8,6 @@ print_manage_menu();
 <div class="col-md-12 col-xs-12">
 <div class="space-10"></div>
 <div class="form-container" > 
-<br/>
 <div class="widget-box widget-color-blue2">
 <div class="widget-header widget-header-small">
 	<h4 class="widget-title lighter">
@@ -20,20 +19,14 @@ print_manage_menu();
 <div class="widget-main no-padding">
 <div class="table-responsive"> 
 <table class="table table-bordered table-condensed table-striped"> 
-<br/>
 <form action="<?php echo plugin_page( 'config_edit' ) ?>" method="post">
-<tr <?php echo helper_alternate_class() ?>>
-<td class="category" colspan="3">
-
-</td>
-</tr>
 <tr>
 <td class="form-title" colspan="3">
 <?php echo lang_get( 'MonProj_title' ) . ': ' . lang_get( 'MonProj_config' ) ?>
 </td>
 </tr>
 
-<tr <?php echo helper_alternate_class() ?>>
+<tr >
 <td class="category"><div align="center">
 <?php echo lang_get( 'MonProj_admin' ) ?>
 </td>
@@ -44,9 +37,7 @@ print_manage_menu();
 </td>
 </tr>
 
-
-
-<tr <?php echo helper_alternate_class( )?>>
+<tr >
 <td class="category" width="20%"><div align="center">
 <?php echo lang_get( 'MonProj_add_all' )?>
 </td>
@@ -58,7 +49,7 @@ print_manage_menu();
 </td>
 </tr> 
 
-<tr <?php echo helper_alternate_class( )?>>
+<tr >
 <td class="category" width="20%"><div align="center">
 <?php echo lang_get( 'MonProj_remove_all' )?>
 </td>
@@ -70,10 +61,6 @@ print_manage_menu();
 </td>
 </tr> 
 
-
-
-
-
 <tr>
 <td class="center" colspan="3">
 <input type="submit" class="button" value="<?php echo lang_get( 'change_configuration' ) ?>" />
@@ -81,6 +68,6 @@ print_manage_menu();
 </tr>
 
 </table>
-<form>
+</form>
 <?php
 layout_page_end();
