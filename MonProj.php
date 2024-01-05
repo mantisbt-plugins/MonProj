@@ -4,7 +4,7 @@ class MonProjPlugin extends MantisPlugin {
 	function register() {
 		$this->name        	= 'MonProj';
 		$this->description 	= lang_get( 'MonProj_description' );
-		$this->version     	= '1.10';
+		$this->version     	= '1.11';
 		$this->requires    	= array('MantisCore'       => '2.0.0',);
 		$this->author      	= 'Cas Nuy';
 		$this->contact     	= 'Cas-at-nuy.info';
@@ -51,21 +51,7 @@ class MonProjPlugin extends MantisPlugin {
 		$result		= db_query($sql);
 	}
 
-  /** uninstall and install functions * */
-    function uninstall() {
-        global $g_db;
-        # remove the tables created at installation
-        $request = 'DROP TABLE ' . plugin_table('monitored_projects');
-        $g_db->Execute($request);
-
-        # IMPORTANT : erase information about the plugin stored in Mantis
-        # Without this request, you cannot create the table again (if you re-install)
-		$schema = 'plugin_MonProj_schema';
-		$request = "delete from {config} where config_id = '$schema'";
-        $g_db->Execute($request);
-    }
-	
-	function schema() {
+ 	function schema() {
 		return array(
 			array( 'CreateTableSQL', array( plugin_table( 'monitored_projects' ), "
 						user_id 			I       NOTNULL UNSIGNED,

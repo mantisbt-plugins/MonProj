@@ -69,5 +69,6 @@ print_manage_menu();
 
 </table>
 </form>
+</div>
 <?php
 layout_page_end();
