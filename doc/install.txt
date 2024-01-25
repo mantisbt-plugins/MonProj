@@ -29,7 +29,7 @@ Do ensure to define a signal in manage_user_edit_page.php.
 Add the following line :
 	event_signal( 'EVENT_MANAGE_USER_FORM'); 
 Just before :
-	include ( 'account_prefs_inc.php' );
+	include( dirname( __FILE__ ) . '/account_prefs_inc.php' );
 
 Ensure to define a signal in manage_user_delete.php.
 Add the following line :
@@ -41,7 +41,7 @@ Also ensure to define a signal in account_delete.php.
 Add the following line :
 	event_signal( 'EVENT_ACCOUNT_DELETED', $f_user_id ); 
 Just before :
-	html_page_top1(); 
+	layout_page_header(); 
 	
 ************************************
 * Adding plugin to mantis          *
