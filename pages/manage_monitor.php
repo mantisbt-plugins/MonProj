@@ -1,6 +1,6 @@
 <?php 
 
-if( !access_has_global_level( config_get( 'manage_user_threshold' ) ) ) {
+if( !access_has_global_level( config_get( 'MonProj_admin' ) ) ) {
 	return;
 }
 include( config_get( 'plugin_path' ) . 'MonProj' . DIRECTORY_SEPARATOR .  'MonProj_api.php');  
