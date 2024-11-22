@@ -36,7 +36,7 @@ require_api( 'html_api.php' );
 
 auth_ensure_user_authenticated();
 auth_reauthenticate();
-
+access_ensure_global_level( plugin_config_get( 'MonProj_admin' ) )  ;
 layout_page_header( lang_get( 'MonProj_title' ) );
 layout_page_begin();
 print_account_menu( 'select_projects.php' ); 

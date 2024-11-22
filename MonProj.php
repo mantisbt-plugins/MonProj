@@ -4,7 +4,7 @@ class MonProjPlugin extends MantisPlugin {
 	function register() {
 		$this->name        	= 'MonProj';
 		$this->description 	= lang_get( 'MonProj_description' );
-		$this->version     	= '1.11';
+		$this->version     	= '1.12';
 		$this->requires    	= array('MantisCore'       => '2.0.0',);
 		$this->author      	= 'Cas Nuy';
 		$this->contact     	= 'Cas-at-nuy.info';
