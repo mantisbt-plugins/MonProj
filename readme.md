@@ -1,7 +1,7 @@
 
 # MonProj plugin for Mantisbt
 
-Version 1.11
+Version 1.12
 Copyright 2024 Cas Nuy
 Only available for Mantis version 2.x
 
