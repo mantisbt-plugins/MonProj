@@ -1,5 +1,5 @@
 <?php
-require_once( 'plugins/MonProj/MonProj_api.php' );  
+include_once( 'plugins/MonProj/MonProj_api.php' );  
 
 class MonProjPlugin extends MantisPlugin {
  
