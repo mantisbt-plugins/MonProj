@@ -27,17 +27,6 @@ print_manage_menu();
 </tr>
 
 <tr >
-<td class="category"><div align="center">
-<?php echo lang_get( 'MonProj_admin' ) ?>
-</td>
-<td class="center"><div align="center">
-<select name="MonProj_admin">
-<?php print_enum_string_option_list( 'access_levels', plugin_config_get( 'MonProj_admin'  ) ) ?>;
-</select> 
-</td>
-</tr>
-
-<tr >
 <td class="category" width="20%"><div align="center">
 <?php echo lang_get( 'MonProj_add_all' )?>
 </td>

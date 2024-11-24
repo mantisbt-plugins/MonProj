@@ -27,9 +27,6 @@ foreach( $f_project_id as $t_project_id ) {
 
 }
 
-if (strstr($_SERVER['HTTP_REFERER'],'manage')) {
-	$t_redirect_url = '/manage_user_edit_page.php?user_id=' .$f_user_id;
-} else {
-	$t_redirect_url = '/plugin.php?page=MonProj/select_projects';
-}
+$t_redirect_url = '/plugin.php?page=MonProj/manage_monitor';
+
 print_header_redirect( $t_redirect_url );

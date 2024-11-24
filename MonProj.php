@@ -1,10 +1,12 @@
 <?php
+require_once( 'plugins/MonProj/MonProj_api.php' );  
+
 class MonProjPlugin extends MantisPlugin {
  
 	function register() {
 		$this->name        	= 'MonProj';
 		$this->description 	= lang_get( 'MonProj_description' );
-		$this->version     	= '1.12';
+		$this->version     	= '1.13';
 		$this->requires    	= array('MantisCore'       => '2.0.0',);
 		$this->author      	= 'Cas Nuy';
 		$this->contact     	= 'Cas-at-nuy.info';
@@ -14,13 +16,11 @@ class MonProjPlugin extends MantisPlugin {
 
 	function init() { 
 		event_declare('EVENT_ACCOUNT_DELETED');
-		event_declare('EVENT_MANAGE_USER_FORM');
 		// above declaration may become obsolete once these are part of standard mantis
 
 		plugin_event_hook('EVENT_REPORT_BUG', 'AddMon');
 		plugin_event_hook('EVENT_ACCOUNT_DELETED', 'DelSelProj');
 		plugin_event_hook('EVENT_MENU_ACCOUNT', 'SelProj');
-		plugin_event_hook('EVENT_MANAGE_USER_FORM', 'SelProj2');
 	}
 
 	function config() {
@@ -34,12 +34,8 @@ class MonProjPlugin extends MantisPlugin {
 
 	function SelProj(){
 		if( access_has_project_level( config_get( 'monitor_bug_threshold' ) ) && !current_user_is_anonymous() ) {
-			return array( '<a href="' . plugin_page( 'select_projects' ) . '">' . lang_get( 'MonProj_description' ) .  '</a>', );
+			return array( '<a href="' . plugin_page( 'manage_monitor' ) . '">' . lang_get( 'MonProj_description' ) .  '</a>', );
 		} 
-	}
-	
-	function SelProj2(){
-		include( config_get( 'plugin_path' ) . 'MonProj' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'manage_monitor.php');  
 	}
 	
 	function AddMon($p_event,$p_bugdata){

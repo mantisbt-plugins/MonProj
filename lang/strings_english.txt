@@ -9,7 +9,6 @@ $s_MonProj_removeall	= "Remove monitoring from all existing issues";
 $s_MonProj_leave		= "Just stopp adding to the monitor list";
 $s_MonProj_add_all		= "Add monitoring";
 $s_MonProj_remove_all	= "Stop monitoring";
-$s_MonProj_admin		= "Required access level for managing";
 $s_MonProj_config		= "Configuration";
 $s_add_monitor_title	= "Add Projects to monitor";
 $s_projects_monitored	= "Projects under Monitoring";

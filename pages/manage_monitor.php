@@ -1,12 +1,23 @@
 <?php 
-include( config_get( 'plugin_path' ) . 'MonProj' . DIRECTORY_SEPARATOR .  'MonProj_api.php');  
-global $t_user;
+require_once( 'core.php' );
+require_api( 'api_token_api.php' );
+require_api( 'authentication_api.php' );
+require_api( 'current_user_api.php' );
+require_api( 'database_api.php' );
+require_api( 'html_api.php' );
+auth_ensure_user_authenticated();
+auth_reauthenticate();
+current_user_ensure_unprotected();
+layout_page_header( lang_get( 'MonProj_title' ) );
+layout_page_begin();
+print_account_menu( 'select_projects.php' ); 
+$t_user_id = auth_get_current_user_id(); 
+$t_user = user_get_row( $t_user_id ); 
 ?>
 	<div class="col-md-12 col-xs-12">
 	<div class="space-10"></div>
 	<div class="form-container" > 
 	        <form id="manage-monproj-add-form" method="post" action="<?php echo plugin_page( 'manage_monitor_add' ) ?>">
-            <?php echo form_security_field( 'manage_user_proj_add' ) ?>
             <input type="hidden" name="user_id" value="<?php echo $t_user['id']?>" />
 			
 				<div class="widget-box widget-color-blue2">
@@ -55,3 +66,5 @@ global $t_user;
 </div>
 </div>
  </form>
+<?php
+layout_page_end();

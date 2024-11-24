@@ -1,7 +1,7 @@
 
 # MonProj plugin for Mantisbt
 
-Version 1.12
+Version 1.13
 Copyright 2024 Cas Nuy
 Only available for Mantis version 2.x
 
@@ -21,13 +21,18 @@ The plugin will adhere to existing Mantis authorizations.
 For example in case a user has no access for monitoring for a certain projcet, this plugin will also not allow it. 
 Please align where needed.
 
+### Update to 1.13
+If with a previous version you added a signal in manage_user_edit_page.php.
+please remove this line from that script:
+event_signal( 'EVENT_MANAGE_USER_FORM'); 
+
 ## Installation                                                                             
 - Copy MonProj directory to the plugins directory of your mantis installation
 After copying to your webserver :
 - Start mantis ad administrator
 - Select manage
 - Select manage Plugins
-- Select Install behind MonProj 1.10
+- Select Install behind MonProj 1.13
 - Click on MonProj to configure 3 settings
 	- Add_all		Default ON	Add monitoring to all existing issues with status < Resolved for project 
 							OFF Add monitoring only to new issues for the project
@@ -40,10 +45,6 @@ After copying to your webserver :
 The events below may appear in standard Mantis in one of the next versions.
 Mantis can be patched manual like this:
 Do ensure to define a signal in manage_user_edit_page.php.
-Add the following line :
-	event_signal( 'EVENT_MANAGE_USER_FORM'); 
-Just before :
-	include( dirname( __FILE__ ) . '/account_prefs_inc.php' );
 
 Ensure to define a signal in manage_user_delete.php.
 Add the following line :
@@ -70,7 +71,6 @@ ALTER TABLE `XXX_plugin_MonProj_monitored_projects_table`
 This plugin is distributed under the same conditions as Mantis itself.
 
 ## Support
-
 Please visit https://github.com/mantisbt-plugins/MonProj
 
 
